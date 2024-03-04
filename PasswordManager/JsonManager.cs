@@ -63,5 +63,15 @@ namespace PasswordManager
             List<Password> passwords = JsonSerializer.Deserialize<List<Password>>(jsonString);
             return passwords;
         }
+
+        public void deletePassword(int index)
+        {
+            List<Password> passwords = getPasswords();
+            passwords.RemoveAt(index);
+
+            string jsonString = JsonSerializer.Serialize(passwords);
+            File.WriteAllText(jsonPath, jsonString);
+
+        }
     }
 }

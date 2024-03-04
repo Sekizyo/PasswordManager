@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
 
 namespace PasswordManager
@@ -34,22 +33,14 @@ namespace PasswordManager
                 return;
             }
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID", typeof(int));
-            dt.Columns.Add("Name", typeof(string));
-            dt.Columns.Add("Password", typeof(string));
-            dt.Columns.Add("Edit", typeof(string));
-            dt.Columns.Add("Delete", typeof(string));
-
-
+            dataGrid.Rows.Clear();
             int i = 1;
             foreach (Password passwd in passwords)
             {
-                dt.Rows.Add(new object[] { i, passwd.Name, passwd.Passwd });
+
+                dataGrid.Rows.Add(new object[] { i, passwd.Name, passwd.Passwd });
                 i++;
             }
-
-            dataGridView1.DataSource = dt;
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -64,6 +55,20 @@ namespace PasswordManager
             textBoxNewPasswd.Text = "";
             json.writePassword(passwd);
             loadPasswd();
+        }
+
+        private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    json.deletePassword(e.RowIndex);
+                    loadPasswd();
+                }
+            }
+
         }
     }
 }
