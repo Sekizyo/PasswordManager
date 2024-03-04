@@ -5,7 +5,6 @@ namespace PasswordManager
 {
     public partial class Form1 : Form
     {
-        private string masterPasswd = null;
         public JsonManager json = new JsonManager();
 
         public Form1()
@@ -13,17 +12,10 @@ namespace PasswordManager
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            loadMasterPasswd();
-
             string password = textBoxPass.Text;
-            if (password == masterPasswd)
+            if (password == json.getMasterPassword())
             {
                 var mainForm = new Main();
                 mainForm.ShowDialog();
@@ -43,20 +35,12 @@ namespace PasswordManager
         }
         private void firstLogin()
         {
-            if (json.checkIfEmpty())
+            if (json.checkIfEmpty() == true ^ json.getMasterPassword() == null)
             {
                 var firstLoginForm = new FirstLogin();
                 firstLoginForm.ShowDialog();
             }
 
-        }
-
-        private void loadMasterPasswd()
-        {
-            if (masterPasswd == null)
-            {
-                masterPasswd = json.getMasterPassword();
-            }
         }
     }
 }

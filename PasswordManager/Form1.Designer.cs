@@ -55,7 +55,6 @@
             this.masterPassword.Size = new System.Drawing.Size(145, 16);
             this.masterPassword.TabIndex = 2;
             this.masterPassword.Text = "Enter Master Password";
-            this.masterPassword.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 

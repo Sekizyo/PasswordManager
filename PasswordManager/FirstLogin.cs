@@ -17,6 +17,7 @@ namespace PasswordManager
             if (textBoxPassword1.Text != textBoxPassword2.Text)
             {
                 MessageBox.Show("Passwords are not identical");
+                return;
             }
 
             json.writeMasterPassword(textBoxPassword1.Text);
