@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace PasswordManager
@@ -27,12 +28,22 @@ namespace PasswordManager
                 return;
             }
 
-            int index = 0;
-            foreach (Password password in passwords)
-            {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID", typeof(int));
+            dt.Columns.Add("Name", typeof(string));
+            dt.Columns.Add("Password", typeof(string));
+            dt.Columns.Add("Edit", typeof(string));
+            dt.Columns.Add("Delete", typeof(string));
 
-                index++;
+
+            int i = 1;
+            foreach (Password pass in passwords)
+            {
+                dt.Rows.Add(new object[] { i, pass.Name, pass.Passwd });
+                i++;
             }
+
+            dataGridView1.DataSource = dt;
         }
 
         private void extendTable()
