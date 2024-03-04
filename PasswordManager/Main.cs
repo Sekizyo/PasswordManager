@@ -59,7 +59,15 @@ namespace PasswordManager
 
         private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 3)
+            {
+                Password pass = passwords[e.RowIndex];
+                var editForm = new EditPassword(pass);
+                editForm.ShowDialog();
+                loadPasswd();
+            }
+
+            else if (e.ColumnIndex == 4)
             {
                 var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)

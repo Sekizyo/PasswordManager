@@ -64,11 +64,37 @@ namespace PasswordManager
             return passwords;
         }
 
+        public int getPasswdIndex(Password find)
+        {
+            int output = -1;
+            int i = 0;
+            List<Password> passwords = getPasswords();
+            foreach (Password passwd in passwords)
+            {
+                if (passwd.Name == find.Name & passwd.Passwd == find.Passwd)
+                {
+                    output = i;
+                    break;
+                }
+                i++;
+            }
+
+            return output;
+        }
+
+        public void editPassword(Password originalPasswd, Password newPasswd)
+        {
+            int index = getPasswdIndex(originalPasswd);
+
+            deletePassword(index);
+            writePassword(newPasswd);
+
+        }
+
         public void deletePassword(int index)
         {
             List<Password> passwords = getPasswords();
             passwords.RemoveAt(index);
-
             string jsonString = JsonSerializer.Serialize(passwords);
             File.WriteAllText(jsonPath, jsonString);
 
