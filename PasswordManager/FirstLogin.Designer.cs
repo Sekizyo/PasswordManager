@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.submit = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.textBoxPassword1 = new System.Windows.Forms.TextBox();
             this.textBoxPassword2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -53,15 +53,15 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Repeat master password";
             // 
-            // submit
+            // btnSubmit
             // 
-            this.submit.Location = new System.Drawing.Point(415, 290);
-            this.submit.Name = "submit";
-            this.submit.Size = new System.Drawing.Size(75, 23);
-            this.submit.TabIndex = 2;
-            this.submit.Text = "Submit";
-            this.submit.UseVisualStyleBackColor = true;
-            this.submit.Click += new System.EventHandler(this.submit_Click);
+            this.btnSubmit.Location = new System.Drawing.Point(415, 290);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 2;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.submit_Click);
             // 
             // textBoxPassword1
             // 
@@ -79,12 +79,13 @@
             // 
             // FirstLogin
             // 
+            this.AcceptButton = this.btnSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.textBoxPassword2);
             this.Controls.Add(this.textBoxPassword1);
-            this.Controls.Add(this.submit);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FirstLogin";
@@ -98,7 +99,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button submit;
+        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.TextBox textBoxPassword1;
         private System.Windows.Forms.TextBox textBoxPassword2;
     }

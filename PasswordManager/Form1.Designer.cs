@@ -65,6 +65,7 @@
             this.Controls.Add(this.masterPassword);
             this.Controls.Add(this.textBoxPass);
             this.Controls.Add(this.btnSubmit);
+            this.AcceptButton = this.btnSubmit;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Login";
