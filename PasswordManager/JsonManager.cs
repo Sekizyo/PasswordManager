@@ -26,14 +26,18 @@ namespace PasswordManager
 
         public void writeMasterPassword(string password)
         {
-            writePassword("MASTERPASSWD", password);
+            writePassword(new Password("MASTERPASSWD", password));
         }
 
-        public void writePassword(string name, string password)
+        public void writePassword(Password pass)
         {
+            if (pass == null)
+            {
+                return;
+            }
 
-            List<Password> data = new List<Password>();
-            data.Add(new Password(name, password));
+            List<Password> data = getPasswords();
+            data.Add(pass);
 
             string jsonString = JsonSerializer.Serialize(data);
             File.WriteAllText(jsonPath, jsonString);

@@ -17,8 +17,14 @@ namespace PasswordManager
 
         private void Main_Load(object sender, EventArgs e)
         {
+            loadPasswd();
+        }
+
+        private void loadPasswd()
+        {
             passwords = json.getPasswords();
             displayPasswd(passwords);
+
         }
 
         private void displayPasswd(List<Password> passwords)
@@ -37,33 +43,27 @@ namespace PasswordManager
 
 
             int i = 1;
-            foreach (Password pass in passwords)
+            foreach (Password passwd in passwords)
             {
-                dt.Rows.Add(new object[] { i, pass.Name, pass.Passwd });
+                dt.Rows.Add(new object[] { i, passwd.Name, passwd.Passwd });
                 i++;
             }
 
             dataGridView1.DataSource = dt;
         }
 
-        private void extendTable()
+        private void btnAddNew_Click(object sender, EventArgs e)
         {
+            if (textBoxNewName == null ^ textBoxNewPasswd == null)
+            {
+                return;
+            }
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
+            Password passwd = new Password(textBoxNewName.Text, textBoxNewPasswd.Text);
+            textBoxNewName.Text = "";
+            textBoxNewPasswd.Text = "";
+            json.writePassword(passwd);
+            loadPasswd();
         }
     }
 }
