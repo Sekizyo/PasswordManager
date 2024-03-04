@@ -38,40 +38,48 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(119, 28);
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelName.ForeColor = System.Drawing.Color.Coral;
+            this.labelName.Location = new System.Drawing.Point(124, 28);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(67, 16);
+            this.labelName.Size = new System.Drawing.Size(128, 29);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "Edit name";
             // 
             // labelPasswd
             // 
             this.labelPasswd.AutoSize = true;
-            this.labelPasswd.Location = new System.Drawing.Point(119, 106);
+            this.labelPasswd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPasswd.ForeColor = System.Drawing.Color.Coral;
+            this.labelPasswd.Location = new System.Drawing.Point(110, 120);
             this.labelPasswd.Name = "labelPasswd";
-            this.labelPasswd.Size = new System.Drawing.Size(93, 16);
+            this.labelPasswd.Size = new System.Drawing.Size(175, 29);
             this.labelPasswd.TabIndex = 1;
             this.labelPasswd.Text = "Edit Password";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(122, 47);
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxName.Location = new System.Drawing.Point(97, 60);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(150, 22);
+            this.textBoxName.Size = new System.Drawing.Size(197, 36);
             this.textBoxName.TabIndex = 2;
             // 
             // textBoxPasswd
             // 
-            this.textBoxPasswd.Location = new System.Drawing.Point(122, 125);
+            this.textBoxPasswd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxPasswd.Location = new System.Drawing.Point(97, 152);
             this.textBoxPasswd.Name = "textBoxPasswd";
-            this.textBoxPasswd.Size = new System.Drawing.Size(150, 22);
+            this.textBoxPasswd.Size = new System.Drawing.Size(197, 36);
             this.textBoxPasswd.TabIndex = 3;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(153, 180);
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSubmit.ForeColor = System.Drawing.Color.Coral;
+            this.btnSubmit.Location = new System.Drawing.Point(115, 232);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.Size = new System.Drawing.Size(148, 49);
             this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -80,6 +88,7 @@
             // EditPassword
             // 
             this.AcceptButton = this.btnSubmit;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(372, 311);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.textBoxPasswd);
