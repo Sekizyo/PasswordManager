@@ -7,6 +7,7 @@ namespace PasswordManager
     public partial class JsonManager
     {
         public string jsonPath = "data.json";
+        public Crypt crypto = new Crypt();
 
         public void initJson()
         {
@@ -19,6 +20,7 @@ namespace PasswordManager
         {
             if (new FileInfo(jsonPath).Length == 0)
             {
+                File.WriteAllText(jsonPath, "[]");
                 return true;
             }
             return false;
@@ -38,8 +40,9 @@ namespace PasswordManager
 
             List<Password> data = getPasswords();
             data.Add(pass);
+            List<Password> hashed = encryptPasswordList(data);
 
-            string jsonString = JsonSerializer.Serialize(data);
+            string jsonString = JsonSerializer.Serialize(hashed);
             File.WriteAllText(jsonPath, jsonString);
         }
 
@@ -60,8 +63,33 @@ namespace PasswordManager
         public List<Password> getPasswords()
         {
             string jsonString = File.ReadAllText(jsonPath);
-            List<Password> passwords = JsonSerializer.Deserialize<List<Password>>(jsonString);
-            return passwords;
+            List<Password> hashed = JsonSerializer.Deserialize<List<Password>>(jsonString);
+            return decryptPasswordList(hashed);
+        }
+
+        private List<Password> encryptPasswordList(List<Password> passwords)
+        {
+            List<Password> output = new List<Password>();
+            foreach (Password passwd in passwords)
+            {
+                string password = crypto.encrypt(passwd.Passwd);
+                output.Add(new Password(passwd.Name, password));
+            }
+
+            return output;
+
+        }
+        private List<Password> decryptPasswordList(List<Password> passwords)
+        {
+            List<Password> output = new List<Password>();
+            foreach (Password passwd in passwords)
+            {
+                string password = crypto.decrypt(passwd.Passwd);
+                output.Add(new Password(passwd.Name, password));
+            }
+
+            return output;
+
         }
 
         public int getPasswdIndex(Password find)
@@ -87,6 +115,7 @@ namespace PasswordManager
             int index = getPasswdIndex(originalPasswd);
 
             deletePassword(index);
+
             writePassword(newPasswd);
 
         }
@@ -95,7 +124,10 @@ namespace PasswordManager
         {
             List<Password> passwords = getPasswords();
             passwords.RemoveAt(index);
-            string jsonString = JsonSerializer.Serialize(passwords);
+
+
+            List<Password> hashed = encryptPasswordList(passwords);
+            string jsonString = JsonSerializer.Serialize(hashed);
             File.WriteAllText(jsonPath, jsonString);
 
         }

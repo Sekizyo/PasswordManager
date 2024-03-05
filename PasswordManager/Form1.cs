@@ -39,6 +39,7 @@ namespace PasswordManager
             {
                 var firstLoginForm = new FirstLogin();
                 firstLoginForm.ShowDialog();
+
             }
 
         }
